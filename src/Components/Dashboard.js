@@ -13,7 +13,7 @@ const Dashboard = () => {
             <Title level={3} style={{ color: "#000", marginTop: 0 }}>
               Dashboard
             </Title>
-            // <Button type="primary" size={"large"} icon={<LogoutOutlined />} />
+          
           </>
         }
         footerContent={<div>Home Page Footer</div>}
