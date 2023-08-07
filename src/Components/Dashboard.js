@@ -11,9 +11,9 @@ const Dashboard = () => {
         headerContent={
           <>
             <Title level={3} style={{ color: "#000", marginTop: 0 }}>
-              Danh Sách Phòng ban
+              Dashboard
             </Title>
-            <Button type="primary" size={"large"} icon={<LogoutOutlined />} />
+            // <Button type="primary" size={"large"} icon={<LogoutOutlined />} />
           </>
         }
         footerContent={<div>Home Page Footer</div>}
