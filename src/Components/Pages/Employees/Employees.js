@@ -24,6 +24,7 @@ import {
   HomeOutlined,
   GlobalOutlined,
   UnorderedListOutlined,
+  NumberOutlined,
 } from "@ant-design/icons";
 import PageLayout from "../../PageLayout";
 import EmpTableInput from "./EmpTableInput";
@@ -183,9 +184,7 @@ const columns = [
   {
     title: (
       <Space>
-        <Title level={4} style={{ color: "#000", marginTop: 0 }}>
-          #
-        </Title>
+        <NumberOutlined />
         Tài khoản ngân hàng
       </Space>
     ),

@@ -9,6 +9,7 @@ import {
   CaretUpFilled,
   MoreOutlined,
   ArrowUpOutlined,
+  NumberOutlined
 } from "@ant-design/icons";
 import PageLayout from "../../PageLayout";
 import departmentsData from "../../data/departmentsData";
@@ -103,9 +104,7 @@ const columns = [
   {
     title: (
       <Space>
-        <Title level={4} style={{ color: "#000", marginTop: 0 }}>
-          #
-        </Title>
+        <NumberOutlined />
         Số nhân viên
       </Space>
     ),
