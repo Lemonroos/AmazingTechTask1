@@ -147,7 +147,7 @@ import Employees from "./Components/Pages/Employees/Employees";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/departments" element={<Departments />} />

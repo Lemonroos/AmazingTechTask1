@@ -32,7 +32,7 @@ export default function SideNav() {
   <Link to="/">Dashboard</Link>
 </Item>
 
- <SubMenu key="sub1" title={ <Title level={5} style={{ margin: 0 }}>NHÂN VIÊN</Title>}>
+ <SubMenu key="sub1" title={ <Title level={5}  >NHÂN VIÊN</Title>}>
 <Item key="2" icon={<TeamOutlined />}>
   <Link to="/departments">Phòng Ban</Link>
 </Item>
@@ -42,27 +42,27 @@ export default function SideNav() {
 </Item>
         <Item key="5"icon={<UserAddOutlined />}>Tạo nhân viên mới</Item>
       </SubMenu>
-      <SubMenu key="sub2" title={ <Title level={5} style={{ margin: 0 }}>TĂNG CA</Title>}>
+      <SubMenu key="sub2" title={ <Title level={5} >TĂNG CA</Title>}>
         <Item key="6"icon={<ClockCircleOutlined/>}>Đơn Tăng Ca Nhân Viên</Item>
         <Item key="7"icon={<ClockCircleOutlined/>}>Đơn Tăng Ca Của Tôi</Item>
       </SubMenu>
-      <SubMenu key="sub3" title={ <Title level={5} style={{ margin: 0 }}>NGHỈ PHÉP</Title>}>
+      <SubMenu key="sub3" title={ <Title level={5} >NGHỈ PHÉP</Title>}>
         <Item key="8"icon={<SolutionOutlined />}>Đơn Nghỉ Phép Nhân Viên</Item>
         <Item key="9"icon={<SolutionOutlined />}>Đơn Nghỉ Phép Của Tôi</Item>
       </SubMenu>
-      <SubMenu key="sub4" title={ <Title level={5} style={{ margin: 0 }}>ĐON KHÁC</Title>}>
+      <SubMenu key="sub4" title={ <Title level={5} >ĐƠN KHÁC</Title>}>
         <Item key="10"icon={<MailOutlined />}>Danh Sách Đơn Khác</Item>
         <Item key="11"icon={<MailOutlined />}>Đơn Khác Của Tôi</Item>
       </SubMenu>
-      <SubMenu key="sub5" title={ <Title level={5} style={{ margin: 0 }}>QUẢN LÍ LƯƠNG</Title>}>
+      <SubMenu key="sub5" title={ <Title level={5} >QUẢN LÍ LƯƠNG</Title>}>
         <Item key="12"icon={<TeamOutlined />}>Lương Nhân Viên</Item>
         <Item key="13"icon={<TeamOutlined />}>Lương Của Tôi</Item>
       </SubMenu>
-      <SubMenu key="sub6" title={ <Title level={5} style={{ margin: 0 }}>HỢP ĐỒNG</Title>}>
+      <SubMenu key="sub6" title={ <Title level={5} >HỢP ĐỒNG</Title>}>
         <Item key="14"icon={<MailOutlined />}>Hợp Đồng Nhân Viên</Item>
         <Item key="15"icon={<MailOutlined />}>Hợp Đồng Của Tôi</Item>
       </SubMenu>
-      <SubMenu key="sub7" title={ <Title level={5} style={{ margin: 0 }}>TUYỂN DỤNG</Title>}>
+      <SubMenu key="sub7" title={ <Title level={5} >TUYỂN DỤNG</Title>}>
         <Item key="16"icon={<TeamOutlined />}>Danh sách ứng viên</Item>
       </SubMenu>
     </Menu>

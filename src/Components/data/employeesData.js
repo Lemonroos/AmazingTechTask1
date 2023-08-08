@@ -13,6 +13,7 @@ const employeesData = [
     address: "123 Đường ABC, Quận 1, TP.HCM",
     country: "Việt Nam",
     account: "1234567890",
+    role: "manager"
   },
   {
     key: "2",
@@ -28,6 +29,7 @@ const employeesData = [
     address: "456 Đường XYZ, Quận 2, TP.HCM",
     country: "Việt Nam",
     account: "0987654321",
+    role: "employee"
   },
   {
     key: "3",
@@ -43,6 +45,7 @@ const employeesData = [
     address: "789 Đường DEF, Quận 3, TP.HCM",
     country: "Việt Nam",
     account: "0123456789",
+    role: "manager"
   },
   {
     key: "4",
@@ -58,6 +61,7 @@ const employeesData = [
     address: "123 Đường ABC, Quận 1, TP.HCM",
     country: "Việt Nam",
     account: "0123456789",
+    role: "manager"
   },
   {
     key: "5",
@@ -73,6 +77,7 @@ const employeesData = [
     address: "456 Đường XYZ, Quận 2, TP.HCM",
     country: "Việt Nam",
     account: "0123456789",
+    role: "employee"
   },
   {
     key: "6",
@@ -88,6 +93,7 @@ const employeesData = [
     address: "789 Đường DEF, Quận 3, TP.HCM",
     country: "Việt Nam",
     account: "0123456789",
+    role: "employee"
   },
   {
     key: "7",
@@ -103,6 +109,7 @@ const employeesData = [
     address: "123 Đường GHI, Quận 4, TP.HCM",
     country: "Việt Nam",
     account: "0123456789",
+    role: "employee"
   },
   {
     key: "8",
@@ -118,6 +125,7 @@ const employeesData = [
     address: "456 Đường JKL, Quận 5, TP.HCM",
     country: "Việt Nam",
     account: "0123456789",
+    role: "employee"
   },
   {
     key: "9",
@@ -133,6 +141,7 @@ const employeesData = [
     address: "789 Đường MNO, Quận 6, TP.HCM",
     country: "Việt Nam",
     account: "0123456789",
+    role: "employee"
   },
   {
     key: "10",
@@ -146,6 +155,7 @@ const employeesData = [
     bank: "",
     birthdate: "",
     address: "",
+    role: "employee"
   },
   {
     key: "11",
@@ -159,6 +169,7 @@ const employeesData = [
     bank: "",
     birthdate: "",
     address: "",
+    role: "employee"
   },
   {
     key: "12",
@@ -172,6 +183,7 @@ const employeesData = [
     bank: "",
     birthdate: "",
     address: "",
+    role: "employee"
   },
 ];
 

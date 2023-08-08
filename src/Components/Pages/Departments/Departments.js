@@ -7,10 +7,20 @@ import {
   ContactsOutlined,
   PhoneOutlined,
   CaretUpFilled,
+  MoreOutlined,
+  ArrowUpOutlined,
 } from "@ant-design/icons";
 import PageLayout from "../../PageLayout";
 import departmentsData from "../../data/departmentsData";
 import employeesData from "../../data/employeesData";
+import { getColor } from "../../Utils/DepartmentColor";
+function findManager(department) {
+  return employeesData.find(
+    (employee) =>
+      employee.department === department && employee.role === "manager"
+  );
+}
+
 function updateEmployeeCount(departmentsData, employeesData) {
   departmentsData.forEach((department) => {
     department.employees = employeesData.filter(
@@ -22,14 +32,6 @@ const { Title, Text } = Typography;
 const renderBoldText = (text) => (
   <Typography.Text strong>{text}</Typography.Text>
 );
-const getRandomColor = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
 
 const columns = [
   {
@@ -37,13 +39,11 @@ const columns = [
     dataIndex: "",
     key: "",
     render: () => <Button type="text" icon={<EllipsisOutlined />} />,
-    width: 100,
   },
   {
     title: "ID",
     dataIndex: "id",
     key: "id",
-    width: 100,
     render: renderBoldText,
   },
   {
@@ -55,10 +55,9 @@ const columns = [
     ),
     dataIndex: "name",
     key: "name",
-    width: 200,
     render: (text) => (
       <Space>
-        <Badge color={getRandomColor()} />
+        <Badge color={getColor(text)} />
         <Typography.Text underline strong>
           {text}
         </Typography.Text>
@@ -70,33 +69,36 @@ const columns = [
       <Space>
         <UserOutlined />
         Quản lí
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <ArrowUpOutlined
+            style={{
+              marginLeft: "8px",
+              // color: sort === "ascend" ? "blue" : undefined,
+            }}
+          />
+        </div>
       </Space>
     ),
 
     dataIndex: "manager",
     key: "manager",
-    render: renderBoldText,
-    filters: [
-      {
-        text: "Filter",
-        value: "Submenu",
-        children: [
-          {
-            text: "Nguyen Van Quan Ly",
-            value: "Nguyen Van Quan Ly",
-          },
-          {
-            text: "Blah Blah Blah",
-            value: "Blah Blah Blah",
-          },
-        ],
-      },
-    ],
-    onFilter: (value, record) => record.manager.indexOf(value) === 0,
+    render: (text, record) => {
+      const manager = findManager(record.name);
+      return manager ? renderBoldText(manager.name) : null;
+    },
+    filters: employeesData
+      .filter((employee) => employee.role === "manager")
+      .map((manager) => ({
+        text: manager.name,
+        value: manager.name,
+      })),
+    onFilter: (value, record) => {
+      const manager = findManager(record.name);
+      return manager && manager.name.indexOf(value) === 0;
+    },
     sorter: (a, b) => a.manager.length - b.manager.length,
     sortDirections: ["ascend"],
-
-    width: 200,
+    filterIcon: <MoreOutlined style={{ fontSize: "18px" }} />,
   },
   {
     title: (
@@ -109,7 +111,6 @@ const columns = [
     ),
     dataIndex: "employees",
     key: "employees",
-    width: 150,
     render: renderBoldText,
   },
   {
@@ -121,8 +122,10 @@ const columns = [
     ),
     dataIndex: "email",
     key: "email",
-    width: 200,
-    render: renderBoldText,
+    render: (text, record) => {
+      const manager = findManager(record.name);
+      return manager ? renderBoldText(manager.email) : null;
+    },
   },
   {
     title: (
@@ -133,8 +136,10 @@ const columns = [
     ),
     dataIndex: "phone",
     key: "phone",
-    width: 150,
-    render: renderBoldText,
+    render: (text, record) => {
+      const manager = findManager(record.name);
+      return manager ? renderBoldText(manager.phone) : null;
+    },
   },
 ];
 
@@ -175,8 +180,7 @@ const Departments = () => {
             dataSource={departmentsData}
             columns={columns}
             scroll={{
-              x: 1500,
-              y: 500,
+              x: "max-content",
             }}
             style={{
               border: "1px solid #ccc",
@@ -185,9 +189,7 @@ const Departments = () => {
             pagination={{
               showTotal: (total, range) =>
                 `${range[0]}-${range[1]} of ${total}`,
-              // add pageSize property
-              pageSize: 11,
-              defaultPageSize: 11,
+              pageSize: 6,
             }}
             className="my-table"
           />

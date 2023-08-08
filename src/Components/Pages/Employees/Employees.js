@@ -28,6 +28,7 @@ import {
 import PageLayout from "../../PageLayout";
 import EmpTableInput from "./EmpTableInput";
 import employeesData from "../../data/employeesData";
+import { getColor } from "../../Utils/DepartmentColor";
 const { Option } = Select;
 // const { Search } = Input;
 
@@ -35,14 +36,6 @@ const { Title, Text } = Typography;
 const renderBoldText = (text) => (
   <Typography.Text strong>{text}</Typography.Text>
 );
-const getRandomColor = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
 
 const columns = [
   {
@@ -50,21 +43,24 @@ const columns = [
     dataIndex: "",
     key: "",
     render: () => <Button type="text" icon={<EllipsisOutlined />} />,
-    width: 100,
   },
   {
     title: "",
     dataIndex: "avatar",
     key: "avatar",
-    width: 100,
-    render: () => <Avatar size="small" icon={<UserOutlined />} />,
+    render: (text, record) => (
+      <Avatar
+        style={{ backgroundColor: record.role === "manager" ? "blue" : "gray" }}
+        size="small"
+        icon={<UserOutlined />}
+      />
+    ),
   },
   {
     title: "ID",
 
     dataIndex: "id",
     key: "id",
-    width: 100,
     render: renderBoldText,
   },
   {
@@ -76,7 +72,6 @@ const columns = [
     ),
     dataIndex: "name",
     key: "name",
-    width: 200,
     render: (text, record) => (
       <>
         <Avatar src={record.avatar} style={{ marginRight: "10px" }} />
@@ -94,10 +89,9 @@ const columns = [
     ),
     dataIndex: "department",
     key: "department",
-    width: 200,
     render: (text) => (
       <Space>
-        <Badge color={getRandomColor()} />
+        <Badge color={getColor(text)} />
         <Typography.Text underline strong>
           {text}
         </Typography.Text>
@@ -114,7 +108,6 @@ const columns = [
     ),
     dataIndex: "phone",
     key: "phone",
-    width: 150,
     render: renderBoldText,
   },
 
@@ -127,7 +120,6 @@ const columns = [
     ),
     dataIndex: "gender",
     key: "gender",
-    width: 150,
     render: (text) => (
       <Tag color={text === "Nam" ? "#1890ff" : "#eb2f96"}>{text}</Tag>
     ),
@@ -142,7 +134,6 @@ const columns = [
     ),
     dataIndex: "email",
     key: "email",
-    width: 200,
     render: renderBoldText,
   },
   {
@@ -154,7 +145,6 @@ const columns = [
     ),
     dataIndex: "bank",
     key: "bank",
-    width: 150,
     render: renderBoldText,
   },
   {
@@ -166,7 +156,6 @@ const columns = [
     ),
     dataIndex: "birthdate",
     key: "birthdate",
-    width: 150,
     render: renderBoldText,
   },
   {
@@ -178,7 +167,6 @@ const columns = [
     ),
     dataIndex: "address",
     key: "address",
-    width: 200,
     render: renderBoldText,
   },
   {
@@ -190,8 +178,7 @@ const columns = [
     ),
     dataIndex: "country",
     key: "country",
-    width: 150,
-    render: renderBoldText,
+    // width: 150,
   },
   {
     title: (
@@ -204,7 +191,6 @@ const columns = [
     ),
     dataIndex: "account",
     key: "account",
-    width: 200,
     render: renderBoldText,
   },
 ];
