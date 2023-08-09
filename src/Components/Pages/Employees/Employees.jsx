@@ -26,17 +26,17 @@ import {
   UnorderedListOutlined,
   NumberOutlined,
 } from "@ant-design/icons";
-import PageLayout from "../../PageLayout";
+import PageLayout from "../../ProjectLayOut/PageLayout";
 import EmpTableInput from "./EmpTableInput";
 import employeesData from "../../data/employeesData";
-import { getColor } from "../../Utils/DepartmentColor";
+import { getColor,renderBoldText } from "../../Utils/Utilities";
 const { Option } = Select;
 // const { Search } = Input;
 
 const { Title, Text } = Typography;
-const renderBoldText = (text) => (
-  <Typography.Text strong>{text}</Typography.Text>
-);
+// const renderBoldText = (text) => (
+  // <Typography.Text strong>{text}</Typography.Text>
+// );
 
 const columns = [
   {
@@ -275,7 +275,7 @@ const Employees = () => {
               pageSize: 7,
               // defaultPageSize: 5,
             }}
-            className="my-table offset-pagination"
+            className="my-table table-content offset-pagination"
             // rowKey={record => record.id}
           />
         </div>

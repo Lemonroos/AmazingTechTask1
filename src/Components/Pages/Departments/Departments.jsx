@@ -11,10 +11,10 @@ import {
   ArrowUpOutlined,
   NumberOutlined
 } from "@ant-design/icons";
-import PageLayout from "../../PageLayout";
+import PageLayout from "../../ProjectLayOut/PageLayout";
 import departmentsData from "../../data/departmentsData";
 import employeesData from "../../data/employeesData";
-import { getColor } from "../../Utils/DepartmentColor";
+import { getColor,renderBoldText } from "../../Utils/Utilities";
 function findManager(department) {
   return employeesData.find(
     (employee) =>
@@ -30,9 +30,9 @@ function updateEmployeeCount(departmentsData, employeesData) {
   });
 }
 const { Title, Text } = Typography;
-const renderBoldText = (text) => (
-  <Typography.Text strong>{text}</Typography.Text>
-);
+// const renderBoldText = (text) => (
+  // <Typography.Text strong>{text}</Typography.Text>
+// );
 
 const columns = [
   {

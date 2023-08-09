@@ -1,3 +1,4 @@
+import { Typography } from "antd";
 // color.js
 const colors = [
   "#FF0000",
@@ -17,3 +18,8 @@ export const getColor = (name) => {
   }
   return colors[Math.abs(hash) % colors.length];
 };
+
+
+export const renderBoldText = (text) => (
+  <Typography.Text strong>{text}</Typography.Text>
+);

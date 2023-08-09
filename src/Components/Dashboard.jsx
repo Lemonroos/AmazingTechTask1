@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
-import PageLayout from "./PageLayout";
+import PageLayout from "./ProjectLayOut/PageLayout";
 const { Title } = Typography;
 
 const Dashboard = () => {

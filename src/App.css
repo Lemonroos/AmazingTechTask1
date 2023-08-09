@@ -1,17 +1,3 @@
-/* .App {
-  display: flex;
-  flex-direction: row;
-} */
-
-/* #right { */
-/* text-align: right;
-  display: inline-flex;
-  gap: 5rem;
-  flex-direction: column;
-  flex: 1; */
-/* height: 100vh; */
-/* overflow: scroll; */
-/* } */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -31,30 +17,11 @@
   background-color: #d3d3d3;
 }
 
-.ant-table-column-sorters {
-  display: block;
-  /* flex-direction: row-reverse; */
-  /* fle */
-  text-align: left;
-  justify-content: flex-start;
-}
-/* hide the bottom border of empty rows */
-/* .ant-table-row.empty-row > td {
-  border-bottom: none;
-} */
-/* add padding to the bottom of the table */
-/* .ant-table-content { */
-/* min-height: 60vh; */
-/* overflow-y:scroll ; */
-/* overflow-x: hidden; */
-/* position: relative; */
-/* } */
-/* In your CSS file */
+
 
 .offset-pagination .ant-table-pagination {
   position: relative; /* Set the position to relative */
   top: 60px; /* Offset the pagination to the bottom */
-  /* Change the background color of the pagination */
 }
 
 .my-table .ant-pagination-item-active {
@@ -80,10 +47,10 @@
   /* font-size: 18px; */
 }
 
-.ant-menu,
+/* .ant-menu,
 .ant-menu-submenu {
   background-color: #fff !important;
-}
+} */
 
 .ant-menu-item {
   font-size: 15px;
@@ -129,3 +96,9 @@
   display: none;
 }
 
+.my-table .ant-pagination-item{
+  display: none;
+}
+.table-content .ant-table-content{
+  height:55vh;
+}

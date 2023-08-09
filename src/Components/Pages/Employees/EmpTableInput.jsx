@@ -44,11 +44,9 @@ const EmpTableInput = ({
         bordered={false}
       />
       <div
-      // style={{
-      //   display: "flex",
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      // }}
+        style={{
+          display: "inline-flex",
+        }}
       >
         <Select
           defaultValue=""
