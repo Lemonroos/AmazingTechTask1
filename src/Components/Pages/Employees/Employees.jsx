@@ -51,7 +51,7 @@ const columns = [
     key: "avatar",
     render: (text, record) => (
       <Avatar
-        style={{ backgroundColor: record.role === "manager" ? "blue" : "gray" }}
+        style={{ backgroundColor: record.role === "manager" ? "#0480fb" : "#aeaeae" }}
         size="small"
         icon={<UserOutlined />}
       />
