@@ -59,7 +59,7 @@ const columns = [
     render: (text) => (
       <Space>
         <Badge color={getColor(text)} />
-        <Typography.Text underline strong>
+        <Typography.Text underline type="secondary">
           {text}
         </Typography.Text>
       </Space>

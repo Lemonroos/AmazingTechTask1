@@ -93,7 +93,7 @@ const columns = [
     render: (text) => (
       <Space>
         <Badge color={getColor(text)} />
-        <Typography.Text underline strong>
+        <Typography.Text underline type="secondary">
           {text}
         </Typography.Text>
       </Space>
@@ -122,7 +122,20 @@ const columns = [
     dataIndex: "gender",
     key: "gender",
     render: (text) => (
-      <Tag color={text === "Nam" ? "#1890ff" : "#eb2f96"}>{text}</Tag>
+      <Tag
+      style={{ fontWeight:"bold",
+        color: text === "Nam" ? "#489bb2" : "#de747c",
+        backgroundColor: text === "Nam" ? "#d1f2fb" : "#f4d7d6",
+      }}
+      bordered={false}
+    >
+      {text}
+    </Tag>
+    
+      // ,
+      // <Tag bordered={false} color="processing">
+      //  {text}
+      // </Tag>
     ),
   },
 
@@ -180,6 +193,7 @@ const columns = [
     dataIndex: "country",
     key: "country",
     // width: 150,
+    render: renderBoldText,
   },
   {
     title: (

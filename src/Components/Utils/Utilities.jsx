@@ -21,5 +21,5 @@ export const getColor = (name) => {
 
 
 export const renderBoldText = (text) => (
-  <Typography.Text strong>{text}</Typography.Text>
+  <Typography.Text type="secondary" strong>{text}</Typography.Text>
 );

@@ -72,8 +72,8 @@ const EmpTableInput = ({
         </Select>
         <Button
           style={{
-            color: "#00FF00",
-            borderColor: "#00FF00",
+            color: "#8de890",
+            borderColor: "#8de890",
           }}
           onClick={handleRefresh}
         >
