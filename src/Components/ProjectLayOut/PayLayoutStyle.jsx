@@ -31,7 +31,7 @@ export const CContent = {
   position: "",
   paddingTop: "5vh",
   // bottom:100,
-  textAlign: "center",
+  // textAlign: "center",
   // height: "100vh",
   overflow: "initial",
   // marginLeft: "auto",

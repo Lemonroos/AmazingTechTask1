@@ -9,12 +9,16 @@ import {
   CaretUpFilled,
   MoreOutlined,
   ArrowUpOutlined,
-  NumberOutlined
+  NumberOutlined,
 } from "@ant-design/icons";
 import PageLayout from "../../ProjectLayOut/PageLayout";
 import departmentsData from "../../data/departmentsData";
 import employeesData from "../../data/employeesData";
-import { getColor,renderBoldText } from "../../Utils/Utilities";
+import {
+  getColor,
+  renderSecondaryText,
+  renderSecondaryTextUnderline,
+} from "../../Utils/Utilities";
 function findManager(department) {
   return employeesData.find(
     (employee) =>
@@ -30,8 +34,8 @@ function updateEmployeeCount(departmentsData, employeesData) {
   });
 }
 const { Title, Text } = Typography;
-// const renderBoldText = (text) => (
-  // <Typography.Text strong>{text}</Typography.Text>
+// const  renderSecondaryText = (text) => (
+// <Typography.Text strong>{text}</Typography.Text>
 // );
 
 const columns = [
@@ -45,7 +49,7 @@ const columns = [
     title: "ID",
     dataIndex: "id",
     key: "id",
-    render: renderBoldText,
+    render: renderSecondaryText,
   },
   {
     title: (
@@ -59,9 +63,7 @@ const columns = [
     render: (text) => (
       <Space>
         <Badge color={getColor(text)} />
-        <Typography.Text underline type="secondary">
-          {text}
-        </Typography.Text>
+        {renderSecondaryTextUnderline(text)}
       </Space>
     ),
   },
@@ -85,7 +87,7 @@ const columns = [
     key: "manager",
     render: (text, record) => {
       const manager = findManager(record.name);
-      return manager ? renderBoldText(manager.name) : null;
+      return manager ? renderSecondaryText(manager.name) : null;
     },
     filters: employeesData
       .filter((employee) => employee.role === "manager")
@@ -110,7 +112,7 @@ const columns = [
     ),
     dataIndex: "employees",
     key: "employees",
-    render: renderBoldText,
+    render: renderSecondaryText,
   },
   {
     title: (
@@ -123,7 +125,7 @@ const columns = [
     key: "email",
     render: (text, record) => {
       const manager = findManager(record.name);
-      return manager ? renderBoldText(manager.email) : null;
+      return manager ? renderSecondaryText(manager.email) : null;
     },
   },
   {
@@ -137,7 +139,7 @@ const columns = [
     key: "phone",
     render: (text, record) => {
       const manager = findManager(record.name);
-      return manager ? renderBoldText(manager.phone) : null;
+      return manager ? renderSecondaryText(manager.phone) : null;
     },
   },
 ];
@@ -159,7 +161,7 @@ const Departments = () => {
         <div
           style={{
             padding: "1% 0 5px 0",
-            margin: "0 10% 10px 10%",
+            margin: "0 0 10px 0",
             borderBottom: "1px solid #ccc",
             textAlign: "right",
           }}
@@ -169,11 +171,7 @@ const Departments = () => {
           </Button>
         </div>
 
-        <div
-          style={{
-            padding: "0 10% 0 10%",
-          }}
-        >
+        <div>
           <Table
             size="large"
             dataSource={departmentsData}

@@ -1,67 +1,42 @@
-import React, { useState } from "react";
 import {
-  Table,
-  Button,
-  Typography,
-  Space,
-  Badge,
-  Avatar,
-  Tag,
-  Select,
-  Input,
-} from "antd";
-import {
-  EllipsisOutlined,
-  PlusOutlined,
-  UserOutlined,
-  IdcardOutlined,
-  PhoneOutlined,
-  ManOutlined,
-  WomanOutlined,
-  MailOutlined,
-  BankOutlined,
   CalendarOutlined,
-  HomeOutlined,
-  GlobalOutlined,
-  UnorderedListOutlined,
+  ContainerOutlined,
+  EllipsisOutlined,
   NumberOutlined,
+  UnorderedListOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Select,
+  Space,
+  Table,
+  Tag,
+  Typography,
+} from "antd";
+import React, { useState } from "react";
 import PageLayout from "../../ProjectLayOut/PageLayout";
 import TableInput from "../../TableInput/TableInputLayout";
-import employeesData from "../../data/employeesData";
 import {
+  formatDate2,
   getColor,
+  renderNote,
+  renderSalary,
   renderSecondaryText,
   renderSecondaryTextUnderline,
 } from "../../Utils/Utilities";
+import empContractData from "../../data/empContractData";
 const { Option } = Select;
-// const { Search } = Input;
 
 const { Title, Text } = Typography;
-// const  renderSecondaryText = (text) => (
-// <Typography.Text strong>{text}</Typography.Text>
-// );
-
 const columns = [
   {
     title: "",
     dataIndex: "",
     key: "",
     render: () => <Button type="text" icon={<EllipsisOutlined />} />,
-  },
-  {
-    title: "",
-    dataIndex: "avatar",
-    key: "avatar",
-    render: (text, record) => (
-      <Avatar
-        style={{
-          backgroundColor: record.role === "manager" ? "#0480fb" : "#aeaeae",
-        }}
-        size="small"
-        icon={<UserOutlined />}
-      />
-    ),
   },
   {
     title: "ID",
@@ -73,8 +48,8 @@ const columns = [
   {
     title: (
       <Space>
-        <UnorderedListOutlined />
-        Tên Nhân Viên
+        <UserOutlined />
+        Tạo bởi
       </Space>
     ),
     dataIndex: "name",
@@ -86,16 +61,15 @@ const columns = [
       </>
     ),
   },
-
   {
     title: (
       <Space>
         <UnorderedListOutlined />
-        Phòng Ban
+        Loại hợp đồng
       </Space>
     ),
-    dataIndex: "department",
-    key: "department",
+    dataIndex: "contractType",
+    key: "contractType",
     render: (text) => (
       <Space>
         <Badge color={getColor(text)} />
@@ -103,143 +77,163 @@ const columns = [
       </Space>
     ),
   },
-
-  {
-    title: (
-      <Space>
-        <PhoneOutlined />
-        Số điện thoại
-      </Space>
-    ),
-    dataIndex: "phone",
-    key: "phone",
-    render: renderSecondaryText,
-  },
-
   {
     title: (
       <Space>
         <UnorderedListOutlined />
-        Giới tính
+        Trạng thái
       </Space>
     ),
-    dataIndex: "gender",
-    key: "gender",
+    dataIndex: "status",
+    key: "status",
     render: (text) => (
       <Tag
         style={{
           fontWeight: "bold",
-          color: text === "Nam" ? "#489bb2" : "#de747c",
-          backgroundColor: text === "Nam" ? "#d1f2fb" : "#f4d7d6",
+          color: text === "Hiệu lực" ? "#877ec0" : "#de747c",
+          backgroundColor: text === "Hiệu lực" ? "#eae6fe" : "#f4d7d6",
         }}
         bordered={false}
       >
         {text}
       </Tag>
-
-      // ,
-      // <Tag bordered={false} color="processing">
-      //  {text}
-      // </Tag>
     ),
-  },
-
-  {
-    title: (
-      <Space>
-        <MailOutlined />
-        Email
-      </Space>
-    ),
-    dataIndex: "email",
-    key: "email",
-    render: renderSecondaryText,
   },
   {
     title: (
       <Space>
-        <BankOutlined />
-        Ngân hàng
+        <UnorderedListOutlined />
+        Loại lương
       </Space>
     ),
-    dataIndex: "bank",
-    key: "bank",
+    dataIndex: "salType",
+    key: "salType",
+    render: (text) => (
+      <Tag
+        style={{
+          fontWeight: "bold",
+          color: text === "Gross To Net" ? "#489bb2" : "#de747c",
+          backgroundColor: text === "Gross To Net" ? "#d1f2fb" : "#f4d7d6",
+        }}
+        bordered={false}
+      >
+        {text}
+      </Tag>
+    ),
+  },
+  {
+    title: (
+      <Space>
+        <NumberOutlined />
+        Người phụ thuộc
+      </Space>
+    ),
+    dataIndex: "dependents",
+    key: "dependents",
     render: renderSecondaryText,
   },
   {
     title: (
       <Space>
         <CalendarOutlined />
-        Ngày sinh
+        Ngày bắt đầu
       </Space>
     ),
-    dataIndex: "birthdate",
-    key: "birthdate",
-    render: renderSecondaryText,
+    dataIndex: "from",
+    key: "from",
+    render: (text) => renderSecondaryText(formatDate2(text)),
   },
   {
     title: (
       <Space>
-        <HomeOutlined />
-        Địa chỉ
+        <CalendarOutlined />
+        Ngày kết thúc
       </Space>
     ),
-    dataIndex: "address",
-    key: "address",
-    render: renderSecondaryText,
-  },
-  {
-    title: (
-      <Space>
-        <GlobalOutlined />
-        Quốc gia
-      </Space>
-    ),
-    dataIndex: "country",
-    key: "country",
-    // width: 150,
-    render: renderSecondaryText,
+    dataIndex: "to",
+    key: "to",
+    render: (text) => renderSecondaryText(formatDate2(text)),
   },
   {
     title: (
       <Space>
         <NumberOutlined />
-        Tài khoản ngân hàng
+        Lương Thỏa thuận
       </Space>
     ),
-    dataIndex: "account",
-    key: "account",
-    render: renderSecondaryText,
+    dataIndex: "basicSal",
+    key: "basicSal",
+    render: renderSalary,
+  },
+  {
+    title: (
+      <Space>
+        <NumberOutlined />
+        Lương đóng thuế
+      </Space>
+    ),
+    dataIndex: "taxSal",
+    key: "taxSal",
+    render: renderSalary,
+  },
+  {
+    title: (
+      <Space>
+        <NumberOutlined />
+        Tổng phụ cấp
+      </Space>
+    ),
+    dataIndex: "tolallowance",
+    key: "tolallowance",
+    render: renderSalary,
+  },
+  {
+    title: (
+      <Space>
+        <ContainerOutlined />
+        Ghi chú
+      </Space>
+    ),
+    dataIndex: "note",
+    key: "note",
+    render: renderNote,
+  },
+  {
+    title: (
+      <Space>
+        <CalendarOutlined />
+        Thời gian tạo
+      </Space>
+    ),
+    dataIndex: "createdDate",
+    key: "createdDate",
+    render: (text) => renderSecondaryText(formatDate2(text)),
+  },
+  {
+    title: (
+      <Space>
+        <CalendarOutlined />
+        Thời gian thay đổi
+      </Space>
+    ),
+    dataIndex: "changedDate",
+    key: "changedDate",
+    render: (text) => renderSecondaryText(formatDate2(text)),
   },
 ];
 
-const Employees = () => {
+const EmployeeContract = () => {
   const [searchText, setSearchText] = useState("");
-  const [filterDepartment, setFilterDepartment] = useState("");
 
-  // const handleSearch = (event) => {
-  //   setSearchText(event.target.value.toLowerCase());
-  // };
-
-  // const handleFilterChange = (value) => {
-  //   setFilterDepartment(value);
-  // };
-
-  const handleRefresh = () => {
-    setSearchText("");
-    setFilterDepartment("");
-  };
-
-  const filteredData = employeesData.filter((employee) => {
-    if (searchText && !employee.name.toLocaleLowerCase().includes(searchText)) {
-      return false;
-    }
-    if (filterDepartment && employee.department !== filterDepartment) {
+  const filteredData = empContractData.filter((empContract) => {
+    if (
+      searchText &&
+      !empContract.name.toLocaleLowerCase().includes(searchText)
+    ) {
       return false;
     }
     return true;
   });
-
   return (
     <>
       <PageLayout
@@ -262,17 +256,13 @@ const Employees = () => {
           <TableInput
             searchText={searchText}
             setSearchText={setSearchText}
-            filterDepartment={filterDepartment}
-            setFilterDepartment={setFilterDepartment}
-            handleRefresh={handleRefresh}
+            showFilter={false}
+            showCreateButton={false}
+            showRefreshButton={false}
           />
         </div>
 
-        <div
-        // style={{
-        //   padding: "0 10% 0 10%",
-        // }}
-        >
+        <div>
           <Table
             size="large"
             dataSource={filteredData}
@@ -292,7 +282,6 @@ const Employees = () => {
               // defaultPageSize: 5,
             }}
             className="my-table table-content offset-pagination"
-            // rowKey={record => record.id}
           />
         </div>
       </PageLayout>
@@ -300,4 +289,4 @@ const Employees = () => {
   );
 };
 
-export default Employees;
+export default EmployeeContract;

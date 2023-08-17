@@ -1,4 +1,4 @@
-const employeesData = [
+var employeesData = [
   {
     key: "1",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",

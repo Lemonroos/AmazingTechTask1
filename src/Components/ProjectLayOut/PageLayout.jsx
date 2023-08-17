@@ -6,6 +6,7 @@ import {
   LogoutOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
+import { Link } from 'react-router-dom';
 import { CSideHeader, CHeader, CSider, CContent } from "./PayLayoutStyle";
 const { Header, Footer, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -37,6 +38,7 @@ const PageLayout = ({ children, headerContent, footerContent }) => {
           <Header style={CHeader}>
             {headerContent}
             {/* <Button type="primary" size={"large"} icon={<LogoutOutlined />} /> */}
+            <Link to="/">
             <Button
               type="ghost" // set type to "ghost"
               size={"large"}
@@ -47,15 +49,26 @@ const PageLayout = ({ children, headerContent, footerContent }) => {
                 borderColor: "1px solid #ccc",
                 boxShadow: "0 -2px 8px rgba(0, 0, 0, 0.15)",
                 rotate: "90deg",
-                padding:0,
+                padding: 0,
                 // fontSize: 20,
                 // display: "inline-block",
                 // textAlign: "center",
                 // margin: 0,
               }}
-            />
+            >
+            
+            </Button>
+            </Link>
           </Header>
-          <Content style={CContent}>{children}</Content>
+          <Content style={CContent}>
+            <div
+              style={{
+                padding: "0 10% 0 10%",
+              }}
+            >
+              {children}
+            </div>
+          </Content>
           {/* <Footer style={footerStyle}>{footerContent}</Footer> */}
         </Layout>
       </Layout>
